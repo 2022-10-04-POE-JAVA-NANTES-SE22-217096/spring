@@ -39,17 +39,17 @@ public class BaseController {
 
 	
 	@GetMapping(path="/formulaire")
-	public String getFormulaire(@ModelAttribute Etudiant etudiant, @SessionAttribute("info") List<String> infos ) {
+	public String getFormulaire(@ModelAttribute Etudiant etudiant) {
 	
-		infos.add("Passage");
+
 		
 		return "/form/formulaire";
 	}
 	
 	@PostMapping(path="/formulaire")
-	public String postFormulaire(Model model, @ModelAttribute Etudiant etudiant, @SessionAttribute("info") List<String> infos) {
+	public String postFormulaire(Model model, @ModelAttribute Etudiant etudiant) {
 	
-		model.addAttribute("message", etudiantService.messageAccueil(etudiant));
+		
 		
 		return "/form/resultat";
 	}
