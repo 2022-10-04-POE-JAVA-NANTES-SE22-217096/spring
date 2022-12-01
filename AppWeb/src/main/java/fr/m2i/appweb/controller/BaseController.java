@@ -2,7 +2,10 @@ package fr.m2i.appweb.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,17 +42,22 @@ public class BaseController {
 
 	
 	@GetMapping(path="/formulaire")
-	public String getFormulaire(@ModelAttribute Etudiant etudiant) {
+	public String getFormulaire(@ModelAttribute Etudiant etudiant, HttpSession session ) {
 	
-
+		
+		if(session.getAttribute("info") == null)
+			session.setAttribute("info", new ArrayList<String>());
+		
+		
+		((List<String>)session.getAttribute("info")).add("passage");
 		
 		return "/form/formulaire";
 	}
 	
 	@PostMapping(path="/formulaire")
-	public String postFormulaire(Model model, @ModelAttribute Etudiant etudiant) {
+	public String postFormulaire(Model model, @ModelAttribute Etudiant etudiant, @SessionAttribute("info") List<String> infos) {
 	
-		
+		model.addAttribute("message", etudiantService.messageAccueil(etudiant));
 		
 		return "/form/resultat";
 	}
