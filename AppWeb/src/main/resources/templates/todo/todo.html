@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="#" method="post" data-th-action="@{/todo/todo}" data-th-object="${todo}">
+	
+		<input type="text" id="inpnom" name="nom" data-th-field="*{nom}" placeholder="inscrivez votre nom">
+		<input type="text" id="inpprenom" name="description" data-th-field="*{description}" placeholder="inscrivez votre description">
+		
+		<input type="submit" value="Envoyer">
+		
+	
+	</form>
+
+
+<hr/>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+    <tr data-th-each="todo : ${ todos }">
+      <td data-th-text="${ todo.nom }"></td>
+      <td data-th-text="${ todo.description }"></td>
+    </tr>
+  </tbody>
+</table>
+
+
+</body>
+</html>
