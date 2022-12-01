@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+body{
+	
+	background-color: purple;
+}
+
+ul {
+  background-color:white;
+  width: 50%;
+  list-style: none;
+  margin: 0;
+  padding: 1em;
+  margin-bottom:2em;
+  box-shadow: 3px 3px 3px silver;
+  text-align: center;
+}
+
+ul li{
+	display: inline;
+	border:1px solid silver;
+	padding:0.5em;
+	box-shadow:2px 2px 2px black;
+	border-radius: 5px;
+}
+ul li:hover{
+	background-color:silver;
+	
+}
