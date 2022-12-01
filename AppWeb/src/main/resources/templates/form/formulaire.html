@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form action="#" method="post" data-th-action="@{/formulaire}" data-th-object="${etudiant}">
+	
+		<input type="text" id="inpnom" name="nom" data-th-field="*{nom}" placeholder="inscrivez votre nom">
+		<input type="text" id="inpprenom" name="prenom" data-th-field="*{prenom}" placeholder="inscrivez votre prenom">
+		
+		<input type="submit" value="Envoyer">
+		
+	
+	</form>
+
+
+
+</body>
+</html>
