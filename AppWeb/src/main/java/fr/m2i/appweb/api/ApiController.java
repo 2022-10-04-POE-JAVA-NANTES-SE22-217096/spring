@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,9 +28,32 @@ import fr.m2i.appweb.service.EtudiantService;
 @RequestMapping(path="/api")
 public class ApiController {
 	
-	
 	@Autowired
 	EtudiantService etudiantService;
+	
+	
+	//Location URI 
+	@GetMapping(
+			path="/etudiant/{id}"
+	)
+	public Etudiant getEtudiantById(@PathVariable String id) {    //on utilise une variable du path {id}
+		
+		System.out.println(id);
+		
+		
+		/*
+		 * 
+		 * Recuperation dans la BDD de l'étudiant.
+		 * 
+		 * 
+		 */
+		
+		Etudiant etudiant = new Etudiant();
+		
+		
+		return etudiant;
+	}
+	
 	
 	
 	/*
@@ -95,7 +119,7 @@ public class ApiController {
 	
 	@PostMapping(
 			path="/etudiants/json",								//path / url
-			consumes={MediaType.APPLICATION_JSON_VALUE} 			//par JSON
+			consumes={MediaType.APPLICATION_JSON_VALUE} 			//par JS[ON
 	)
 	@ResponseStatus(code=HttpStatus.CREATED)						//Optionnel permet de renvoyer un code HTTP de retour (200 OK, 204 No Content etc...), ici 201
 	public void postJsonEtudiant(@RequestBody Etudiant etudiant) { 
@@ -125,7 +149,9 @@ public class ApiController {
 		System.out.println(etudiant);
 		
 		URI uri = uriBuilder.path("/api/etudiant/{id}").buildAndExpand(etudiant.getNom()).toUri(); //rajoute une location dans le header
-        return ResponseEntity.created(uri).body(etudiant);
+        
+		
+		return ResponseEntity.created(uri).body(etudiant);
 		
 	
 		

@@ -9,6 +9,18 @@ public class Todo {
 		private String description;
 		
 		
+		public Todo()
+		{
+			
+		}
+		
+		public Todo(String nom, String description) {
+			this.nom = nom;
+			this.description = description;
+			
+		}
+		
+		
 		public String getNom() {
 			return nom;
 		}
