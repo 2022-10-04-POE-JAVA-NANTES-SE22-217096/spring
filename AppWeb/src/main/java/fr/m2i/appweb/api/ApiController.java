@@ -166,7 +166,7 @@ public class ApiController {
 	 */
 	@GetMapping(
 			path="/etudiants/jackson",								//path / url
-			produces={"application/json"} //négociation de contenu / par défaut JSON
+			produces={"application/json"} 							//négociation de contenu / par défaut JSON
 	)
 	public List<EtudiantJackson> getJacksonEtudiant() { 
 	
